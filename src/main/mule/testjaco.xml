@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="160db9d6-c4e4-428b-97df-6623dc6024e0" >
+		<http:listener-connection host="localhost" port="8085" />
+	</http:listener-config>
+	<flow name="testjacoFlow" doc:id="12e44ba0-8c5d-48c4-a84b-3cd6612365ac" >
+		<http:listener doc:name="Listener" doc:id="cbed85ff-b20f-4ee9-b358-abf219456199" config-ref="HTTP_Listener_config" path="/api/test"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="dcf3af59-c9d7-497c-a6c0-75ed977857e5" />
+		<logger level="INFO" doc:name="Logger" doc:id="5e77cce3-d66c-4637-870c-c40eb38ea83a" />
+	</flow>
+</mule>
